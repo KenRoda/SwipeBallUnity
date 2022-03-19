@@ -46,8 +46,6 @@ public class BallController : MonoBehaviour
 
         if (this.transform.position.z > 8000)
         {
-            // Scene scene = SceneManager.GetActiveScene();
-            // SceneManager.LoadScene(scene.name);
             this.myGameController.GetComponent<MyGameController>().GameClear();
         }
     }

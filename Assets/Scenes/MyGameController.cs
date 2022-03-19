@@ -6,6 +6,7 @@ using System.Collections;
 public class MyGameController : MonoBehaviour
 {
     private GameObject myGameText;
+    private bool gameClear = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,11 @@ public class MyGameController : MonoBehaviour
         {
             this.ResumeGame();
             this.myGameText.GetComponent<Text>().text = "";
+            if (this.gameClear)
+            {
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
+            }
         }
     }
 
@@ -37,6 +43,7 @@ public class MyGameController : MonoBehaviour
     public void GameClear()
     {
         this.myGameText.GetComponent<Text>().text = "Game Clear \n Time:" + Time.time;
+        this.gameClear = true;
         this.PauseGame();
     }
 }
