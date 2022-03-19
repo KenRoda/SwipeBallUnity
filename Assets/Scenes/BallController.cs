@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallController : MonoBehaviour
 {
@@ -8,15 +9,23 @@ public class BallController : MonoBehaviour
 
     private Rigidbody myRigidbody;
     private readonly float turnForce = 5000.0f;
+    private GameObject myGameController;
 
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
+        this.myGameController = GameObject.Find("MyGameController");
+        myRigidbody.AddForce(transform.forward * forwardForce * 10000);
     }
 
     private void Update()
     {
         myRigidbody.AddForce(transform.forward * forwardForce);
+        if (myRigidbody.velocity.magnitude < 100 && myRigidbody.velocity.magnitude > 5)
+        {
+            myRigidbody.AddForce(transform.forward * forwardForce * 100);
+        }
+
         if (Input.GetKey(KeyCode.LeftArrow) && -movableRange < transform.position.x)
             myRigidbody.AddForce(-turnForce, 0, 0);
         else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < movableRange)
@@ -33,6 +42,13 @@ public class BallController : MonoBehaviour
             {
                 myRigidbody.AddForce(turnForce, 0, 0);
             }
+        }
+
+        if (this.transform.position.z > 8000)
+        {
+            // Scene scene = SceneManager.GetActiveScene();
+            // SceneManager.LoadScene(scene.name);
+            this.myGameController.GetComponent<MyGameController>().GameClear();
         }
     }
 }
