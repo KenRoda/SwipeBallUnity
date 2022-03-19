@@ -44,7 +44,7 @@ public class BallController : MonoBehaviour
             }
         }
 
-        if (this.transform.position.z > 8000)
+        if (this.transform.position.z > 7950)
         {
             this.myGameController.GetComponent<MyGameController>().GameClear();
         }
