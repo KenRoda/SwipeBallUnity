@@ -35,7 +35,6 @@ public class BallController : MonoBehaviour
         {
             if (Input.mousePosition.x < Screen.width / 2f)
             {
-                Debug.Log("Add Force!");
                 myRigidbody.AddForce(-turnForce, 0, 0);
             }
             else
