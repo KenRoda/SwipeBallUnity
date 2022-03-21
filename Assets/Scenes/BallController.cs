@@ -15,15 +15,15 @@ public class BallController : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         this.myGameController = GameObject.Find("MyGameController");
-        myRigidbody.AddForce(transform.forward * forwardForce * 10000);
+        myRigidbody.AddForce(Vector3.forward * forwardForce * 10000);
     }
 
     private void Update()
     {
-        myRigidbody.AddForce(transform.forward * forwardForce);
+        myRigidbody.AddForce(Vector3.forward * forwardForce);
         if (myRigidbody.velocity.magnitude < 100 && myRigidbody.velocity.magnitude > 5)
         {
-            myRigidbody.AddForce(transform.forward * forwardForce * 100);
+            myRigidbody.AddForce(Vector3.forward * forwardForce * 100);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow) && -movableRange < transform.position.x)
