@@ -42,7 +42,7 @@ public class MyGameController : MonoBehaviour
 
     public void GameClear()
     {
-        this.myGameText.GetComponent<Text>().text = "Game Clear \n Time:" + Time.time;
+        this.myGameText.GetComponent<Text>().text = "Game Clear \n Time:" + Time.timeSinceLevelLoad;
         this.gameClear = true;
         this.PauseGame();
     }
