@@ -13,6 +13,7 @@ public class MyGameController : MonoBehaviour
     {
         this.PauseGame();
         this.myGameText = GameObject.Find("MyGameText");
+        Debug.Log("Game START!");
     }
 
     // Update is called once per frame
